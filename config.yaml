@@ -1,0 +1,18 @@
+casbin:
+  model-path: ./rbac_model.conf
+system:
+  name: "GinNaiveAdmin"
+  mode: "debug"
+  port: 8888
+  version: "v0.0.1"
+  start_time: "2020-10-05"
+zap:
+  level: info
+  format: console
+  prefix: '[GinNaiveAdmin]'
+  directory: log
+  link-name: latest_log
+  showLine: true
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  log-in-console: true
