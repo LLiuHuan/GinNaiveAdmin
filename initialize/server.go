@@ -5,14 +5,23 @@ import (
 	"GinNaiveAdmin/global"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"go.uber.org/zap"
 )
 
 func RunServer() *http.Server {
+
+	// 初始化Validator翻译器
+	if err := InitTrans("zh"); err != nil {
+		fmt.Printf("init validator failed, err: %v\n", err)
+		global.GNA_LOG.Error("init validator failed, err", zap.Error(err))
+		os.Exit(0)
+	}
+
 	// 注册路由
-	router := Routers()
+	router := Routers(global.GNA_CONF.System.Mode)
 
 	address := fmt.Sprintf(":%d", global.GNA_CONF.System.Port)
 	s := core.InitServer(address, router)

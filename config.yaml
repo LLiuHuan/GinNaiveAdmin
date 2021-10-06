@@ -6,6 +6,8 @@ system:
   port: 8888
   version: "v0.0.1"
   start_time: "2020-10-05"
+  use-multipoint: false
+  env: ""
 zap:
   level: info
   format: console
@@ -16,3 +18,31 @@ zap:
   encode-level: LowercaseColorLevelEncoder
   stacktrace-key: stacktrace
   log-in-console: true
+mysql:
+  path: 127.0.0.1:3306
+  config: charset=utf8mb4&parseTime=True&loc=Local
+  db-name: gna
+  username: root
+  password: LLiuHuan980724.
+  max-idle-conns: 0
+  max-open-conns: 0
+  log-mode: false
+  log-zap: ""
+rate-limit:
+  ip-verify: true
+  ip-limit-con: 10
+  ip-list-key: blackListKey
+  cap: 100
+  quantum: 100
+redis:
+  db: 0
+  addr: 127.0.0.1:6379
+  password: ""
+jwt:
+  signing-key: GinNaiveAdmin-Signing-Key
+  access-expires-time: 12
+  refresh-expires-time: 12
+captcha:
+  noise-count: 10
+  img-width: 240
+  img-height: 80
